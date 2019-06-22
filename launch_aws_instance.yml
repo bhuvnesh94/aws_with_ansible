@@ -1,0 +1,10 @@
+---
+ - hosts: localhost
+   gather_facts: no
+   tasks:
+    - ec2:
+       image: ami-5b673c34
+       region: ap-south-1
+       key_name: bhanu
+       count: 1
+       instance_type: t2.micro

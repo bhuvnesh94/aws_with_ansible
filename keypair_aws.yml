@@ -1,0 +1,16 @@
+---
+ - hosts: localhost
+   gather_facts: no
+   tasks:
+    - name: creating key file for aws instance
+      ec2_key:
+       name: bhanu
+       state: present
+       region: ap-south-1
+      register: ec2_key_result
+
+    - name: saving private key
+      copy:
+       content: "{{ ec2_key_result }}"
+       dest: "./bhanu.pem"
+       mode: 0600
